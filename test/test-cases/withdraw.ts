@@ -23,9 +23,9 @@ export const testWithdraw = async (accounts: Truffle.Accounts) => {
     prevUserPod = Number(web3.utils.fromWei(userPod));
   });
 
-  it("Should be able to withdraw 100000 DRC and burn DR-POD", async () => {
+  it("Should be able to withdraw 10000 DRC and burn DR-POD", async () => {
     const withdrawResult = await instance.withdrawDrc(
-      100000,
+      10000,
       getUnixTimeAfterMins(10)
     );
 
@@ -36,7 +36,7 @@ export const testWithdraw = async (accounts: Truffle.Accounts) => {
     assert.exists(withdrawLog);
 
     if (withdrawLog) {
-      assert.isAtLeast(withdrawLog.args.amount.toNumber(), 100000);
+      assert.isAtLeast(withdrawLog.args.amount.toNumber(), 10000);
       assert.isAbove(Number(web3.utils.fromWei(withdrawLog.args.podBurned)), 0);
       assert.equal(
         Number(web3.utils.fromWei(withdrawLog.args.podTotalSupply)).toFixed(2),

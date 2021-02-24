@@ -33,7 +33,7 @@ export const testChangeStrategy = async () => {
         getContractAddress("weth", newtworkType),
       ],
       [40, 30, 30],
-      getUnixTimeAfterMins(10)
+      getUnixTimeAfterMins(10),
     );
 
     const changeStrategyLog = changeStrategyResult.logs.find(
