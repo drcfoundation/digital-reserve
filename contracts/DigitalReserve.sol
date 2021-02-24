@@ -500,10 +500,15 @@ contract DigitalReserve is IDigitalReserve, ERC20, Ownable {
         address[] memory path = new address[](2);
         path[0] = _tokenAddress;
         path[1] = uniswapRouter.WETH();
+
         SafeERC20.safeApprove(IERC20(path[0]), address(uniswapRouter), _amount);
+        
         uint256 amountOut = uniswapRouter.getAmountsOut(_amount, path)[1];
-        uniswapRouter.swapExactTokensForTokens(_amount, amountOut, path, address(this), deadline);
-        return amountOut;
+        uint256 amountOutWithFeeTolerance = amountOut.mul(999).div(1000);
+        uint256 ethBeforeSwap = IERC20(path[1]).balanceOf(address(this));
+        uniswapRouter.swapExactTokensForTokensSupportingFeeOnTransferTokens(_amount, amountOutWithFeeTolerance, path, address(this), deadline);
+        uint256 ethAfterSwap = IERC20(path[1]).balanceOf(address(this));
+        return ethAfterSwap - ethBeforeSwap;
     }
 
     /**

@@ -32,28 +32,26 @@ export const testSecondDeposit = async (accounts: Truffle.Accounts) => {
     );
   });
 
-  it("Should be able to deposit 9000000 DRC and mint DR-POD", async () => {
-    await instance.changeDepositStatus(true);
-
+  it("Should be able to deposit 90000 DRC and mint DR-POD", async () => {
     await drcContract.methods
-      .approve(instance.address, 9000000)
+      .approve(instance.address, 90000)
       .send({ from: accounts[0] });
 
     const allowance = Number(
       await drcContract.methods.allowance(accounts[0], instance.address).call()
     );
 
-    assert.equal(allowance, 9000000);
+    assert.equal(allowance, 90000);
 
     const drPodPriceBefore = web3.utils.fromWei(
       await instance.getProofOfDepositPrice()
     );
 
-    const priceImpact = await instance.depositPriceImpact(9000000);
+    const priceImpact = await instance.depositPriceImpact(90000);
     console.log("priceImpact", priceImpact.toNumber());
 
     const depositResult = await instance.depositDrc(
-      9000000,
+      90000,
       getUnixTimeAfterMins(10)
     );
 
@@ -69,10 +67,10 @@ export const testSecondDeposit = async (accounts: Truffle.Accounts) => {
     assert.exists(depositLog);
 
     if (depositLog) {
-      assert.equal(depositLog.args.amount.toNumber(), 9000000);
+      assert.equal(depositLog.args.amount.toNumber(), 90000);
       assert.isAbove(
         Number(web3.utils.fromWei(depositLog.args.podMinted)),
-        990
+        10
       );
       assert.equal(
         Number(web3.utils.fromWei(depositLog.args.podTotalSupply)),
@@ -84,10 +82,10 @@ export const testSecondDeposit = async (accounts: Truffle.Accounts) => {
 
   it("Should have correct token balances", async () => {
     const totalSupply = await instance.totalSupply();
-    assert.isAbove(Number(web3.utils.fromWei(totalSupply)), 990);
+    assert.isAbove(Number(web3.utils.fromWei(totalSupply)), 90);
 
     const userBalance = await instance.balanceOf(accounts[0]);
-    assert.isAbove(Number(web3.utils.fromWei(userBalance)), 990);
+    assert.isAbove(Number(web3.utils.fromWei(userBalance)), 90);
   });
 
   it("Should match designed percentage", async () => {
