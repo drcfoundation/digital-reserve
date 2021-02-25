@@ -37,6 +37,17 @@ module.exports = {
       confirmations: 2,
       from: fromAddress,
     },
+    main: {
+      provider: () =>
+        new HDWalletProvider(
+          mnemonic,
+          `https://mainnet.infura.io/v3/${infuraKey}`
+        ),
+      network_id: 1,
+      gas: 6000000,
+      gasPrice: 130000000000,
+      confirmations: 2,
+    },
   },
 
   // Set default mocha options here, use special reporters etc.
