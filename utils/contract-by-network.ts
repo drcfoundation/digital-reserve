@@ -1,4 +1,12 @@
-type ContractName = "uniswap" | "drc" | "weth" | "wbtc" | "paxg" | "usdc";
+type ContractName =
+  | "uniswap"
+  | "drc"
+  | "weth"
+  | "wbtc"
+  | "paxg"
+  | "usdc"
+  | "farm"
+  | "mph";
 type NetworkType = "test" | "main";
 export type Network = "development" | "ropsten" | "main";
 
@@ -28,6 +36,14 @@ const contractAddresses: ContractAddresses = {
   usdc: {
     test: "0x87c00648150d89651FB6C5C5993338DCfcA3Ff7B",
     main: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  },
+  farm: {
+    test: "0xDaddaAF81FA6f58610aaE83afA1F30929cDB4B22",
+    main: "0xa0246c9032bC3A600820415aE600c6388619A14D",
+  },
+  mph: {
+    test: "0x3007164919cC8A1Ce090DD7AEA5A57051d4478C1",
+    main: "0x8888801af4d980682e47f1a9036e589479e835c5",
   },
 };
 
