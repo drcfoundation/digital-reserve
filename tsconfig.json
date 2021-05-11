@@ -5,7 +5,7 @@
     "target": "ES2018",
     "strict": true,
     "esModuleInterop": true,
-    "allowJs": true,
+    "allowJs": false,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "types": ["@types/node", "@types/chai", "@types/mocha"],
