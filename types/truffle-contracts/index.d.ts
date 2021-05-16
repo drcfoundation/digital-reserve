@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import { DigitalReserveContract } from "./DigitalReserve";
+import { DigitalReserveWithdrawalContract } from "./DigitalReserveWithdrawal";
 import { ERC20Contract } from "./ERC20";
 import { IDigitalReserveContract } from "./IDigitalReserve";
 import { IERC20Contract } from "./IERC20";
@@ -17,6 +18,9 @@ declare global {
   namespace Truffle {
     interface Artifacts {
       require(name: "DigitalReserve"): DigitalReserveContract;
+      require(
+        name: "DigitalReserveWithdrawal"
+      ): DigitalReserveWithdrawalContract;
       require(name: "ERC20"): ERC20Contract;
       require(name: "IDigitalReserve"): IDigitalReserveContract;
       require(name: "IERC20"): IERC20Contract;
@@ -34,6 +38,10 @@ export {
   DigitalReserveContract,
   DigitalReserveInstance,
 } from "./DigitalReserve";
+export {
+  DigitalReserveWithdrawalContract,
+  DigitalReserveWithdrawalInstance,
+} from "./DigitalReserveWithdrawal";
 export { ERC20Contract, ERC20Instance } from "./ERC20";
 export {
   IDigitalReserveContract,

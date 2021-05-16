@@ -51,6 +51,6 @@ export const getContractAddress = (
   name: ContractName,
   network: Network
 ): string => {
-  const networkType: NetworkType = network !== "ropsten" ? "main" : "test"; // TODO: switch back to mainnet to be safe
+  const networkType: NetworkType = network === "main" ? "main" : "test"; // TODO: switch back to mainnet to be safe
   return contractAddresses[name][networkType];
 };
