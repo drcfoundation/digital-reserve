@@ -35,7 +35,7 @@ contract DigitalReserveWithdrawal {
 
         SafeERC20.safeTransferFrom(drPod, msg.sender, address(this), drPodToWithdraw);
 
-        digitalReserve.withdrawPercentage(percentage, deadline);
+        digitalReserve.withdrawPercentage(100, deadline);
 
         SafeERC20.safeTransfer(drcToken, msg.sender, drcToken.balanceOf(address(this)));
     }

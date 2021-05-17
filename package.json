@@ -17,7 +17,7 @@
     "compile": "truffle compile",
     "compile-ts": "tsc -p ./tsconfig.migrate.json --outDir ./migrations",
     "compile-tools": "tsc -p ./tsconfig.tools.json --outDir ./local-tools",
-    "etherscan-verify": "truffle run verify DigitalReserve",
+    "etherscan-verify": "truffle run verify DigitalReserveWithdrawal",
     "etherscan-verify:main": "yarn etherscan-verify --network main",
     "etherscan-verify:ropsten": "yarn etherscan-verify --network ropsten",
     "generate-types": "typechain --target=truffle-v5 'build/contracts/*.json'",

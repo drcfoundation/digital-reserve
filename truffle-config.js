@@ -33,7 +33,6 @@ module.exports = {
           `https://ropsten.infura.io/v3/${infuraKey}`
         ),
       network_id: 3,
-      gas: 5500000,
       confirmations: 2,
       from: fromAddress,
     },
@@ -44,9 +43,10 @@ module.exports = {
           `https://mainnet.infura.io/v3/${infuraKey}`
         ),
       network_id: 1,
-      gas: 6000000,
-      gasPrice: 130000000000,
+      gas: 800000,
+      gasPrice: 100000000000,
       confirmations: 2,
+      skipDryRun: true,
     },
   },
 
